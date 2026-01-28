@@ -1,0 +1,468 @@
+.game-setup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 26, 26, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.game-setup-panel {
+  background: linear-gradient(135deg, #f0d9b5 0%, #e8d4a8 100%);
+  border: 3px solid #d4af37;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.game-setup-panel h2 {
+  color: #8b6914;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.setup-section {
+  margin-bottom: 30px;
+}
+
+.setup-section h3 {
+  color: #1a1a1a;
+  font-size: 18px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Opções de Cor */
+.color-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: white;
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.option input {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #d4af37;
+}
+
+.option:hover {
+  background: #fff9e6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.option.selected {
+  background: #d4af37;
+  color: white;
+  border-color: #8b6914;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.5);
+}
+
+.option span {
+  font-size: 16px;
+}
+
+/* Label de Dificuldade */
+.difficulty-display-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 15px;
+  background: #fff9e6;
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  min-height: 40px;
+}
+
+.difficulty-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #8b6914;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Controle de Dificuldade */
+.difficulty-control {
+  display: flex;
+  align-items: center;
+  padding: 20px 15px;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid #d4af37;
+}
+
+.difficulty-slider {
+  width: 100%;
+  height: 14px;
+  border-radius: 7px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #8b6914, #d4af37);
+  cursor: pointer;
+}
+
+.difficulty-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #d4af37;
+  cursor: pointer;
+  border: 3px solid #8b6914;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.difficulty-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.difficulty-slider::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+
+.difficulty-slider::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+.difficulty-slider::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #d4af37;
+  cursor: pointer;
+  border: 3px solid #8b6914;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.difficulty-slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Controle de Tempo */
+.time-control {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid #d4af37;
+}
+
+.time-slider {
+  flex: 1;
+  height: 8px;
+  border-radius: 5px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #8b6914, #d4af37);
+}
+
+.time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #d4af37;
+  cursor: pointer;
+  border: 2px solid #8b6914;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.time-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #d4af37;
+  cursor: pointer;
+  border: 2px solid #8b6914;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.time-display {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 80px;
+}
+
+.time-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #8b6914;
+}
+
+.time-unit {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Botões */
+.setup-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.btn-back,
+.btn-start {
+  flex: 1;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-back {
+  background: #2d2d2d;
+  color: #f0d9b5;
+  border: 2px solid #666;
+}
+
+.btn-back:hover {
+  background: #444;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-start {
+  background: linear-gradient(135deg, #d4af37 0%, #8b6914 100%);
+  color: white;
+  border: 2px solid #8b6914;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.btn-start:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+.btn-start:active {
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .game-setup-panel {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .game-setup-panel h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .setup-section h3 {
+    font-size: 16px;
+  }
+
+  .difficulty-options,
+  .color-options {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .time-control {
+    flex-direction: column;
+  }
+
+  .time-slider {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-setup-overlay {
+    padding: 10px;
+  }
+
+  .game-setup-panel {
+    padding: 25px 15px;
+    max-width: 100%;
+    border-radius: 15px;
+  }
+
+  .game-setup-panel h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .setup-section {
+    margin-bottom: 20px;
+  }
+
+  .setup-section h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .difficulty-display-label {
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    min-height: 35px;
+  }
+
+  .difficulty-value {
+    font-size: 14px;
+  }
+
+  .difficulty-control {
+    padding: 15px 12px;
+  }
+
+  .difficulty-slider {
+    height: 10px;
+  }
+
+  .difficulty-slider::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .difficulty-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .color-options {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .time-control {
+    padding: 15px 12px;
+  }
+
+  .time-display {
+    gap: 5px;
+  }
+
+  .time-value {
+    font-size: 24px;
+  }
+
+  .time-unit {
+    font-size: 12px;
+  }
+
+  .time-slider {
+    height: 10px;
+  }
+
+  .time-slider::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .time-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .button-group {
+    gap: 8px;
+  }
+
+  .start-btn,
+  .back-btn {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* Scrollbar customizado */
+.game-setup-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.game-setup-panel::-webkit-scrollbar-track {
+  background: #e8d4a8;
+  border-radius: 10px;
+}
+
+.game-setup-panel::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 10px;
+}
+
+.game-setup-panel::-webkit-scrollbar-thumb:hover {
+  background: #8b6914;
+}
