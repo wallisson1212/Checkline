@@ -1,9 +1,6 @@
 {
-  "buildCommand": "cd chess-frontend && npm run build",
-  "outputDirectory": "chess-frontend/dist",
-  "installCommand": "cd chess-frontend && npm install",
-  "env": {
-    "CI": "false"
-  }
+  "buildCommand": "cd chess-frontend && npm install && npm run build",
+  "outputDirectory": "chess-frontend/dist"
 }
+
 
