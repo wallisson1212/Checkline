@@ -111,6 +111,7 @@ class Chess:
                 if self.last_click_status[2] == False and input[2] == True:
                     right_button = True
 
+                self.last_click_status = input
                 return (left_button, center_button, right_button)
 
     def position_board_pieces(self):
@@ -637,7 +638,6 @@ class Chess:
                 x = self.click_position[0]
                 y = self.click_position[1]
                 if self.player_view == 'white' and self.player_turn == 'white' and self.selected_piece[0:1] == 'w':
-                    if y >= 1:
                         if self.board_map[y-1][x-1][0:1] == 'b':
                             self.actions_board_map[y-1][x-1] = 'o'
                         if self.board_map[y-1][x] == '':
@@ -1189,18 +1189,16 @@ def main():
         # Game
         jogo.clock.tick(60)
         jogo.board()
-        jogo.mouse_actions(mouse)
-        jogo.piece_move_or_capture()
         jogo.clear_map_actions()
+        jogo.mouse_actions(mouse)
         jogo.pawn_move()
         jogo.knight_move()
         jogo.bishop_move()
         jogo.rook_move()
         jogo.queen_move()
         jogo.king_move()
-
-        # Filter out illegal moves (those leaving the king in check) for the selected piece
         jogo.filter_moves_for_selected()
+        jogo.piece_move_or_capture()
 
         # Update check / checkmate / stalemate state
         jogo.update_check_and_game_state()
